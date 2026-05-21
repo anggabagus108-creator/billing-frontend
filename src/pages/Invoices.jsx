@@ -30,7 +30,7 @@ function Invoices() {
   };
 
   const downloadPDF = (id) => {
-    window.open(`http://localhost:3000/api/invoices/pdf/${id}`);
+    window.open(`/api/invoices/pdf/${id}`, "_blank");
   };
 
   const handlePay = async (id, amount) => {
