@@ -40,10 +40,12 @@ function Dashboard() {
 
   // ✅ DOWNLOAD REPORT PDF
   const downloadReport = () => {
-    window.open(
-      `http://localhost:3000/api/dashboard/report?year=${year}&month=${month}`
-    );
-  };
+  window.open(
+    `/api/dashboard/report?year=${year}&month=${month}`,
+    "_blank"
+  );
+};
+
 
   // ✅ LIST TAHUN
   const getYears = () => {
