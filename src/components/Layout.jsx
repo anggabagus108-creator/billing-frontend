@@ -25,7 +25,7 @@ function Layout({ children }) {
       
       {/* ✅ SIDEBAR */}
       <div className="w-60 bg-blue-600 text-white p-5">
-        <h1 className="text-xl font-bold mb-6">🚀 RT/RW Net</h1>
+        <h1 className="text-xl font-bold mb-6">SMARTKIDNET</h1>
 
         <div className="flex flex-col gap-3">
           {menu.map((item) => (

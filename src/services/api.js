@@ -1,10 +1,12 @@
 import axios from "axios";
 
 const API = axios.create({
-  baseURL: "http://localhost:3000/api",
+  baseURL: "https://mysitetrial.my.id/api",
 });
 
-// ✅ AUTO KIRIM TOKEN
+////////////////////////////////////////////////////////////
+// ✅ AUTO KIRIM TOKEN (REQUEST)
+////////////////////////////////////////////////////////////
 API.interceptors.request.use((config) => {
   const token = localStorage.getItem("token");
 
@@ -15,4 +17,27 @@ API.interceptors.request.use((config) => {
   return config;
 });
 
-export default API; 
+////////////////////////////////////////////////////////////
+// ✅ HANDLE TOKEN EXPIRED (RESPONSE)
+////////////////////////////////////////////////////////////
+API.interceptors.response.use(
+  (response) => response,
+  (error) => {
+    // ✅ kalau token expired / unauthorized
+    if (error.response?.status === 401) {
+      console.log("🔒 Token expired / invalid");
+
+      alert("Session habis, silakan login ulang 😃");
+
+      // ✅ hapus token
+      localStorage.removeItem("token");
+
+      // ✅ redirect ke login
+      window.location.href = "/login";
+    }
+
+    return Promise.reject(error);
+  }
+);
+
+export default API;

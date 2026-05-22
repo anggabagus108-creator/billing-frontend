@@ -41,7 +41,7 @@ function Dashboard() {
   // ✅ DOWNLOAD REPORT PDF
   const downloadReport = () => {
   window.open(
-    `/api/dashboard/report?year=${year}&month=${month}`,
+    `http://localhost:3000/api/dashboard/report?year=${year}&month=${month}`,
     "_blank"
   );
 };
